@@ -7,6 +7,7 @@ class OpenbatonClient < Formula
   depends_on :java => "1.7+"
 
   def install
+    ENV.java_cache
     system "./gradlew", "installDist"
     # Change application path
     inreplace "cli/build/install/cli/bin/openbaton-client", /APP_HOME="`pwd -P`"/, %Q(APP_HOME="#{libexec}")
